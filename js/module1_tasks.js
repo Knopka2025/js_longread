@@ -1140,19 +1140,30 @@ function generateNumber() {
 generateNumber();
 
 
-//?Задача 77
+//?Задача 77 -  new Date().getFullYear()
+
 // Функція визначення віку
 // Створи функцію `calculateAge`, яка приймає рік народження як аргумент, обчислює вік на основі поточного року
 //  та виводить повідомлення `"You are X years old."`, де `X` — розрахований вік. Виклич функцію.
 
 
 
-
-//?Задача 78
+//!Задача 78 if else
 // Функція перевірки парного числа
 // Створи функцію `isEven`, яка приймає число як аргумент і перевіряє, чи є воно парним.
 // Якщо число парне, функція виводить `"The number X is even."`, якщо непарне — `"The number X is odd."`,
 // де `X` — передане число. Виклич функцію.
+
+function isEven(number) {
+    if (number % 2 === 0) {
+        console.log(`The number ${ number } is even`);
+    }
+    else {
+        console.log(`The number ${ number } is odd`);
+    }
+}
+isEven(23);
+isEven(72);
 
 
 //! Задача 79
@@ -1190,8 +1201,18 @@ convertCurrency( 420, 7)
 // `"It's hot outside!"`, якщо температура більше `25°C`, `"It's cold outside!"`, якщо менше `10°C`, або
 // `"The weather is nice!"`, якщо знаходиться в межах `10–25°C`. Виклич функцію.
 
+function checkTemperature(temperatureO) {
+    if (temperatureO >= 25) {
+        return 'It is hot outside!';
+    }
+    else {
+        return ' The weather is nice!';
+    }
+}
+console.log(checkTemperature(22));
+console.log(checkTemperature(28));
 
-//! Задача 81
+//! Задача 81   for
 // Функція генерації випадкового кольору
 // Створи функцію `generateColor`, яка створює випадковий шістнадцятковий колір (наприклад, `#ff5733`)
 // та виводить `"Your random color is X."`, де `X` — згенерований колір. Виклич функцію.
@@ -1395,3 +1416,25 @@ console.log(getElementWidth("50px", "8px", "4px")); // 74
 console.log(getElementWidth("60px", "12px", "8.5px")); // 101
 console.log(getElementWidth("200px", "0px", "0px")); // 200
 
+//! Задача 94
+//Обчислення загальної висоти елемента
+//Оголоси функцію getElementHeight, яка очікує три параметри, значення яких будуть задаватися під час її виклику:
+//- contenT — перший параметр, висота контенту
+//- paddinG — другий параметр, значення вертикального падінгу для кожної зі сторін
+//- bordeR — третій параметр, значення товщини бордера для кожної зі сторін
+//Значення всіх параметрів будуть рядками формату Npx, де N — це довільне число, ціле або дробове.
+//Доповни код функції так, щоб вона повертала число — загальну висоту елемента. При розрахунку загальної висоти орієнтуйся на те, що значення box-sizing дорівнює border-box.
+//Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи. У консоль будуть виведені результати її роботи.
+
+
+function getElementHeight(contenT, paddinG, bordeR) {
+    const contentHeight = parseFloat(contenT);
+    const paddingHeight = parseFloat(paddinG) * 2;
+    const borderHeight = parseFloat(bordeR) * 2;
+
+    return contentHeight + paddingHeight + borderHeight;
+}
+
+
+console.log(getElementHeight("200px", "10px", "5px")); // 230
+console.log(getElementHeight("150px", "15px", "2px")); // 184
