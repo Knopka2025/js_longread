@@ -623,7 +623,12 @@ console.log('Задача 123');
 //console.log(isComfortableTemperature(15, 25, 30));  // false (Температура занадто висока)
 //console.log(isComfortableTemperature(15, 25, 10));  // false (Температура занадто низька)
 
-
+function isComfortableTemperature(minTemp, maxTemp, currentTemp) {
+    return currentTemp >= minTemp && currentTemp <= maxTemp;
+}
+console.log(isComfortableTemperature(15, 25, 20));  // true (Температура у межах норми)
+console.log(isComfortableTemperature(15, 25, 30));  // false (Температура занадто висока)
+console.log(isComfortableTemperature(15, 25, 10));  // false (Температура занадто низька)
 
 
     console.log('Задача 124');
@@ -636,6 +641,13 @@ console.log('Задача 123');
 //console.log(isEligibleForCompetition(18, 35, 40));  // false (Занадто старий для участі)
 //console.log(isEligibleForCompetition(18, 35, 16));  // false (Занадто молодий для участі)
 
+function isEligibleForCompetition(minAge, maxAge, userAge) {
+    return userAge >= minAge && userAge <= maxAge;
+}
+
+console.log(isEligibleForCompetition(18, 35, 25));  // true (Користувач відповідає критеріям)
+console.log(isEligibleForCompetition(18, 35, 40));  // false (Занадто старий для участі)
+console.log(isEligibleForCompetition(18, 35, 16));  // false (Занадто молодий для участі)
 
     console.log('Задача 125');
 //- Перевірка рівня гучності звуку
@@ -646,7 +658,13 @@ console.log('Задача 123');
 //console.log(isVolumeSafe(20, 80, 90));  // false (Занадто гучно)
 //console.log(isVolumeSafe(20, 80, 10));  // false (Занадто тихо)
 
+function isVolumeSafe(minVolume, maxVolume, currentVolume) {
+    return currentVolume >= minVolume && currentVolume <= maxVolume;
+}
 
+console.log(isVolumeSafe(20, 80, 50));  // true (Гучність у безпечному діапазоні)
+console.log(isVolumeSafe(20, 80, 90));  // false (Занадто гучно)
+console.log(isVolumeSafe(20, 80, 10));  // false (Занадто тихо)
     
 console.log('Задача 126');
 //- Перевірка ваги багажу для авіаперельоту
@@ -656,3 +674,286 @@ console.log('Задача 126');
 //console.log(isLuggageWithinLimit(5, 20, 15));  // true (Вага у допустимих межах)
 //console.log(isLuggageWithinLimit(5, 20, 25));  // false (Занадто важкий багаж)
 //console.log(isLuggageWithinLimit(5, 20, 3));   // false (Недостатня вага)
+
+function isLuggageWithinLimit(minWeight, maxWeight, luggageWeight) {
+    return luggageWeight >= minWeight && luggageWeight <= maxWeight;
+}
+console.log(isLuggageWithinLimit(5, 20, 15));  // true (Вага у допустимих межах)
+console.log(isLuggageWithinLimit(5, 20, 25));  // false (Занадто важкий багаж)
+console.log(isLuggageWithinLimit(5, 20, 3));   // false (Недостатня вага)
+
+console.log('Задача 127');
+//Доступ до преміум статей
+//Розроби функцію checkAccess(subType), яка перевіряє, чи користувач має доступ до преміум-статей на сайті. 
+// Якщо передплата "pro" або "vip", доступ дозволено (true), інакше — доступ заборонений (false).
+function checkAccess(subType) {
+    return subType === 'pro' || subType === 'vip';
+}
+console.log(checkAccess("pro")); // true
+console.log(checkAccess("vip")); // true
+console.log(checkAccess("basic")); // false
+console.log(checkAccess("free")); // false
+console.log(checkAccess("premium")); // false
+
+
+console.log('Задача 128');
+//Доступ до відео високої якості
+//Користувачі можуть переглядати відео в 4K тільки якщо мають "premium" або "pro" предоплату.
+// Використовуючи оператор "АБО", реалізуй функцію checkVideoAccess(subVideoType), яка визначає, чи може користувач дивитися контент у високій якості.
+ 
+function checkVideoAccess(subVideoType) {
+    return subVideoType === 'premium' || subVideoType === 'pro';
+}
+console.log(checkVideoAccess("pro")); // true
+console.log(checkVideoAccess("vip")); // false
+console.log(checkVideoAccess("basic")); // false
+console.log(checkVideoAccess("free")); // false
+console.log(checkVideoAccess("premium")); // true
+
+console.log('Задача 129');
+//В інтернет-магазині діє спеціальна умова для безкоштовної доставки. Якщо сума замовлення не менше 1000 грн
+// або користувач має преміум-статус ("premium"), то доставка буде безкоштовною.
+//Напишіть функцію isFreeShipping(orderAmount, userStatus), яка приймає два параметри:
+//- orderAmount – сума замовлення (у грн)
+//- userStatus – статус користувача ("basic", "premium", "gold", тощо)
+//Функція повинна повертати true, якщо користувач має право на безкоштовну доставку, і false – якщо ні.
+
+function isFreeShipping(orderAmount, userStatus) {
+    return orderAmount >= 1000 || userStatus === 'premium';
+}
+console.log(isFreeShipping(1200, "basic")); // true (сума достатня)  
+console.log(isFreeShipping(800, "premium")); // true (користувач має преміум-статус)  
+console.log(isFreeShipping(800, "basic")); // false (ані статус, ані сума не підходять)  
+
+
+console.log('Задача 130');
+//На платформі онлайн-курсів існує спеціальна умова для отримання сертифіката. Якщо студент набрав не менше 80 балів або має статус "VIP" на курсі, то він отримує сертифікат.
+//Напишіть функцію canGetCertificate(score, studentStatus), яка приймає два параметри:
+//- score – кількість набраних балів
+//- studentStatus – статус студента ("regular", "VIP", "guest", тощо)
+//Функція повинна повертати true, якщо студент має право на сертифікат, і false – якщо ні.
+
+function canGetCertificate(score, studentStatus) {
+    return score >= 80 || studentStatus === 'VIP';
+}
+
+console.log(canGetCertificate(85, "regular")); // true (балів достатньо)  
+console.log(canGetCertificate(75, "VIP")); // true (статус VIP)  
+console.log(canGetCertificate(75, "regular")); // false (ані статус, ані бали не підходять)  
+
+console.log('Задача 131');
+//В онлайн-грі є два способи отримати доступ до спеціального квесту:
+//- Якщо рівень гравця не менше 15 або він має статус "Elite".
+//- Якщо у гравця не менше 500 золота або він отримав спеціальне запрошення (hasInvite === true).
+//Напишіть функцію canJoinQuest(level, status, gold, hasInvite), яка перевіряє, чи може гравець взяти участь у квесті.
+
+function canJoinQuest(level, status, gold, hasInvite) {
+    return level >= 15 || status === 'Elite' && gold >= 500 || hasInvite === true;
+}
+
+console.log(canJoinQuest(16, "Regular", 600, false)); // true (рівень і золото достатні)  
+console.log(canJoinQuest(12, "Elite", 400, true)); // true (статус Elite і запрошення)  
+console.log(canJoinQuest(14, "Regular", 450, false)); // false (ані рівень, ані золота достатньо)  
+console.log(canJoinQuest(10, "Elite", 200, false)); // false (немає золота і запрошення)  
+
+
+console.log('Задача 132');
+// На космічну експедицію допускаються лише кандидати, які відповідають одній з двох груп умов:
+// - Фізична підготовка:
+// - Вік не менше 25 років або кандидат має статус "experienced"
+// - Сила (рівень фізичної підготовки) не менше 80 балів
+// - Наукова підготовка:
+// - Освітній рівень "PhD" або "Master"
+// - Досвід роботи у сфері досліджень не менше 5 років
+// Реалізуйте функцію canJoinMission(age, status, strength, education, experience), яка перевіряє, чи може кандидат брати участь у космічній експедиції.
+
+function canJoinMission(age, status, strength, education, experience) {
+    const phisicalExp = (age >= 25 || status === 'experienced') && strength >= 80;
+    const educationExp = (education === 'PhD' || education === 'Master') && experience >= 5;
+    return phisicalExp || educationExp;
+}
+console.log(canJoinMission(30, "novice", 85, "Bachelor", 4)); // true (відповідає фізичним умовам)
+console.log(canJoinMission(22, "experienced", 90, "Bachelor", 2)); // true (статус "experienced", сила достатня)
+console.log(canJoinMission(28, "novice", 75, "PhD", 6)); // true (відповідає науковим умовам)
+console.log(canJoinMission(24, "novice", 70, "Bachelor", 3)); // false (не відповідає жодній групі)
+console.log(canJoinMission(40, "expert", 90, "Master", 10)); // true (відповідає обом групам)
+ 
+
+console.log('Задача 133');
+// У великому місті працює система громадського транспорту, яка надає безкоштовний проїзд певним групам пасажирів. 
+// Безкоштовний проїзд доступний, якщо виконується хоча б одна з умов:
+// - Соціальні пільги:
+// - Пасажиру не менше 65 років або він має статус "disabled" (особа з інвалідністю).
+// - Студентський проїзд:
+// - Пасажир має активний студентський квиток (isStudent === true) та його вік не більше 23 років.
+// Напишіть функцію canRideFree(age, status, isStudent), яка перевіряє, чи має пасажир право на безкоштовний проїзд.
+
+function canRideFree(age, status, isStudent) {
+    const pensionBenefits = age >= 65 || status === 'disabled';
+    const studentBenefits = isStudent === true && age <= 23;
+    return pensionBenefits || studentBenefits;
+}
+console.log(canRideFree(70, "regular", false)); // true (пенсіонер)
+console.log(canRideFree(30, "disabled", false)); // true (особа з інвалідністю)
+console.log(canRideFree(20, "regular", true)); // true (студент)
+console.log(canRideFree(25, "regular", true)); // false (занадто старий для студентської знижки)
+console.log(canRideFree(40, "regular", false)); // false (не має пільг)
+
+console.log('Задача 134');
+//На веб-сайті є кнопка "Відкрити/Закрити" модальне вікно. Натисканням кнопки модальне вікно має змінювати свій стан —
+// якщо воно відкрите, його потрібно закрити, а якщо закрите, то відкрити.
+//Напишіть функцію toggleModalVisibility(isVisible), яка приймає булевий параметр isVisible (true або false) і повертає протилежне значення.
+//Приклад роботи функції:
+//console.log(toggleModalVisibility(true));  // false (модальне вікно закривається)
+//console.log(toggleModalVisibility(false)); // true (модальне вікно відкривається)
+
+function toggleModalVisibility(isVisible) {
+    return !isVisible;
+}
+
+console.log(toggleModalVisibility(true));  // false (модальне вікно закривається)
+console.log(toggleModalVisibility(false)); // true (модальне вікно відкривається)
+
+
+console.log('Задача 135');
+// У мобільному додатку є кнопка, яка перемикає режим темної теми.
+// - Якщо режим активовано (true), кнопка повинна його вимкнути (false).
+// - Якщо режим вимкнено (false), кнопка повинна його активувати (true).
+// - Використовуйте оператор ! (НЕ) для реалізації перемикання.
+
+function themeMode(isActive) {
+    return !isActive;
+}
+
+console.log(themeMode(true)); //false
+console.log(themeMode(false)); //true
+
+console.log('Задача 136');
+// У додатку є розумна система сповіщень, яка вирішує, чи потрібно надсилати екстрене повідомлення користувачу.
+// Сповіщення надсилається, якщо виконується хоча б одна з умов:
+// - Екстрені ситуації:
+// - Якщо заряд батареї менше або дорівнює 10% та режим енергозбереження вимкнено (powerSaving === false).
+// - Якщо інтернет-з’єднання втрачено (isOnline === false) та немає кешованих даних (hasCachedData === false).
+// - Особливі користувачі:
+// - Якщо користувач є VIP (userStatus === "VIP") або має рівень доступу не менше "premium".
+// - Якщо користувач активував аварійний режим (emergencyMode === true).
+// Напишіть функцію shouldSendAlert(battery, powerSaving, isOnline, hasCachedData, userStatus, emergencyMode),
+// яка перевіряє, чи слід надсилати екстрене сповіщення.
+
+function shouldSendAlert(battery, powerSaving, isOnline, hasCachedData, userStatus, emergencyMode) {
+    const emergencySituation = battery <= 10 && powerSaving === false;
+    const internetConnection = !isOnline && !hasCachedData;
+    const specialUser = userStatus === 'VIP' || userStatus === 'premium';
+    const emergencyCode = emergencyMode === true;
+
+
+    return emergencySituation || specialUser || internetConnection || emergencyCode;
+}
+
+console.log(shouldSendAlert(5, false, true, true, "standard", false)); // true (низький заряд і нема енергозбереження)
+console.log(shouldSendAlert(50, true, false, false, "basic", false)); // true (немає інтернету та кешованих даних)
+console.log(shouldSendAlert(80, true, true, true, "VIP", false)); // true (користувач VIP)
+console.log(shouldSendAlert(60, false, true, true, "standard", true)); // true (аварійний режим активовано)
+console.log(shouldSendAlert(50, true, true, true, "basic", false)); // false (жодна умова не підходить)
+
+
+
+console.log('Задача 137');
+// У корпоративному сховищі файлів доступ до документів контролюється за двома групами умов:
+// - Права доступу:
+// - Якщо користувач має рівень доступу "admin" або "manager", то доступ дозволено.
+// - Якщо документ позначений як "public", то його можна переглянути незалежно від рівня доступу.
+// - Додаткові перевірки:
+// - Якщо користувач має віддалений доступ (remoteAccess === true), то може переглядати файли, навіть без адміністративного рівня.
+// - Якщо документ є конфіденційним (isConfidential === true), його можуть переглядати тільки "admin".
+// Реалізуйте функцію canAccessFile(userRole, fileType, remoteAccess, isConfidential), яка перевіряє, чи може користувач переглянути файл.
+ 
+function canAccessFile(userRole, fileType, remoteAccess, isConfidential){
+     const accessRight = userRole === 'admin' || userRole === 'manager';
+    const document = fileType === 'public';
+    const rechecking = remoteAccess === true;
+    const confidential = isConfidential === true === 'admin';
+    return accessRight || document || rechecking || confidential;
+}
+   
+// Перевірка доступу до файлів
+console.log(canAccessFile("admin", "internal", false, false)); // true (адмін має доступ)
+console.log(canAccessFile("manager", "confidential", false, false)); // true (менеджер має доступ)
+console.log(canAccessFile("user", "public", false, false)); // true (публічний документ доступний усім)
+console.log(canAccessFile("employee", "internal", true, false)); // true (користувач має віддалений доступ)
+console.log(canAccessFile("employee", "confidential", false, true)); // false (конфіденційний файл доступний лише адміну)
+
+
+
+
+console.log('Задача 138');
+// У корпоративній мережі кожен співробітник може отримати доступ до спеціальних ресурсів, якщо виконується хоча б одна з умов:
+// - Адміністративний доступ:
+// - Користувач має рівень доступу "admin" або "supervisor", тоді доступ дозволено.
+// - Якщо ресурс має статус "open", він доступний для всіх.
+// - Доступ за безпековими винятками:
+// - Якщо користувач має доступ за винятками (hasSecurityClearance === true), він може переглядати закриті документи.
+// - Якщо ресурс є конфіденційним (isConfidential === true), доступ мають лише адміністратори.
+// Реалізуйте функцію canAccessResource(userRole, resourceStatus, hasSecurityClearance, isConfidential), яка перевіряє, чи може користувач отримати доступ.
+
+function canAccessResource(userRole, resourceStatus, hasSecurityClearance, isConfidential) {
+    const accessAdmin = userRole === 'admin' || userRole === 'supervisor';
+    const openAccessStatus = resourceStatus === 'open';
+    const confAccessExeptions = hasSecurityClearance === true;
+    const confidentialAccess = isConfidential === true === 'admin';
+    return accessAdmin || openAccessStatus || confAccessExeptions || confidentialAccess;
+}
+
+// Перевірка доступу до ресурсів
+console.log(canAccessResource("admin", "restricted", false, false)); // true (адмін має доступ)
+console.log(canAccessResource("supervisor", "confidential", false, false)); // true (керівник має доступ)
+console.log(canAccessResource("employee", "open", false, false)); // true (відкритий ресурс доступний усім)
+console.log(canAccessResource("staff", "restricted", true, false)); // true (користувач має безпековий доступ)
+console.log(canAccessResource("staff", "confidential", false, true)); // false (конфіденційний ресурс доступний лише адміну)
+
+
+console.log('Задача 139');
+// У чаті є автоматичний фільтр, який перетворює текст користувача у великий регістр, якщо він містить слово "важливо" або "терміново".
+// Напишіть функцію formatMessage(message), яка:
+// - Перевіряє, чи рядок містить "важливо" або "терміново".
+// - Якщо так, перетворює рядок у верхній регістр за допомогою toUpperCase().
+// - В іншому випадку повертає рядок без змін.
+
+// Перевірка роботи функції
+//console.log(formatMessage("Це важливо для всіх!")); // "ЦЕ ВАЖЛИВО ДЛЯ ВСІХ!"
+//console.log(formatMessage("терміново! Будь ласка, перевірте!")); // "ТЕРМІНОВО! БУДЬ ЛАСКА, ПЕРЕВІРТЕ!"
+//console.log(formatMessage("Просто звичайний текст.")); // "Просто звичайний текст."
+
+
+
+console.log('Задача 140');
+// У текстовому редакторі є автоматична функція форматування заголовків.
+// Напишіть функцію formatTitle(title), яка приймає рядок і перетворює його у верхній регістр.
+function formatTitle(title) {
+    
+    return title.toUpperCase();
+}
+console.log(formatTitle("нові технології в IT")); // "НОВІ ТЕХНОЛОГІЇ В IT"
+console.log(formatTitle("екологія та майбутнє планети")); // "ЕКОЛОГІЯ ТА МАЙБУТНЄ ПЛАНЕТИ"
+console.log(formatTitle("що нового у світі штучного інтелекту?")); // "ЩО НОВОГО У СВІТІ ШТУЧНОГО ІНТЕЛЕКТУ?"
+
+
+console.log('Задача 141');
+// У системі онлайн-реєстрації всі імена користувачів мають бути записані великими літерами.
+// Напишіть функцію formatUsername(username), яка:
+// - Приймає ім’я користувача.
+// - Перетворює його у верхній регістр за допомогою toUpperCase().
+// - Повертає відформатоване ім’я.
+
+function formatUsername(username) {
+    return username.toUpperCase();
+}
+// Перевірка роботи функції
+console.log(formatUsername("vladyslava")); // "VLADYSLAVA"
+console.log(formatUsername("john_doe")); // "JOHN_DOE"
+console.log(formatUsername("user2025")); // "USER2025"
+
+
+
+
+
